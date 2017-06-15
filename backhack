@@ -1,4 +1,3 @@
-
 #!/bin/bash
 clear
 echo ' '
@@ -42,4 +41,4 @@ echo "BackHack is Running!"
 echo ' '
 echo ' '
 #run namp of IPlist on pentest host
-nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script "default or (discovery and$
+#nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script "default or (discovery and safe)" ~/Documents/Scans/IPLlist.txt | tee ~/Documents/Scans/BackHack/"IPlist-$(date +%s).txt"

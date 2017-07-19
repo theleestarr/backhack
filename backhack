@@ -30,10 +30,8 @@ echo ' '
 echo ' '
 echo "These IPs will be scanned"
 echo ' '
+#Pull banlist from jumpserver
 scp starfury000@192.168.1.9:banlist.txt ~/Documents/Scans/
-
-#ssh starfury000@192.168.1.9 | sudo grep "Ban" /var/log/fail2ban.log | cut -d ' ' -f16- | tee banlist.txt
-
 #verify list to scan
 cat ~/Documents/Scans/banlist.txt
 echo ' '
@@ -42,6 +40,8 @@ read -p "Press [Enter] key to start BackHack..."
 echo "BackHack is Running!"
 echo ' '
 echo ' '
-        #run namp of IPlist on pentest host
-nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script "default or (discovery and safe)" ~/Documents/Scans/banlist.txt | tee ~/Documents/Scans/BackHack/"IPlist-$(date +%s).txt"
+#run namp of IPlist on pentest host
+#nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script "default or (discovery and safe)" -iL ~/Documents/Scans/banlist.txt | tee ~/Documents/Scans/BackHack/"IPlist-$$
+nmap --top-ports 1000 -iL ~/Documents/Scans/banlist.txt | tee ~/Documents/Scans/BackHack/"IPlist-$(date +%s).txt"
 
+List Scan Complete
